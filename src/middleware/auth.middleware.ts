@@ -1,16 +1,16 @@
-import { NextFunction, RequestHandler, Response } from "express";
-import * as jwt from "jsonwebtoken";
-import AuthenticationTokenMissingException from "../exceptions/AuthenticationTokenMissingException";
-import WrongAuthenticationTokenException from "../exceptions/WrongAuthenticationTokenException";
-import DataStoredInToken from "../interfaces/dataStoredInToken";
-import RequestWithUser from "../interfaces/requestWithUser.interface";
-import userModel from "../user/user.model";
+import { NextFunction, RequestHandler, Response } from 'express';
+import * as jwt from 'jsonwebtoken';
+import AuthenticationTokenMissingException from '../exceptions/AuthenticationTokenMissingException';
+import WrongAuthenticationTokenException from '../exceptions/WrongAuthenticationTokenException';
+import DataStoredInToken from '../interfaces/dataStoredInToken';
+import RequestWithUser from '../interfaces/requestWithUser.interface';
+import userModel from '../user/user.model';
 
 function authMiddleware(omitSecondFactor = false): RequestHandler {
   return async (
     request: RequestWithUser,
     response: Response,
-    next: NextFunction
+    next: NextFunction,
   ) => {
     const cookies = request.cookies;
     console.log(cookies);
@@ -19,7 +19,7 @@ function authMiddleware(omitSecondFactor = false): RequestHandler {
       try {
         const verificationResponse = jwt.verify(
           cookies.Authorization,
-          secret
+          secret,
         ) as DataStoredInToken;
         const { _id: id, isSecondFactorAuthenticated } = verificationResponse;
         const user = await userModel.findById(id);

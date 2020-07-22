@@ -109,7 +109,7 @@ class AuthenticationController implements Controller {
       response.send({
         ...user.toObject(),
         password: undefined,
-        twoFactorAuthenticationCode: undefined
+        twoFactorAuthenticationCode: undefined,
       });
     } else {
       next(new WrongAuthenticationTokenException());
@@ -145,7 +145,7 @@ class AuthenticationController implements Controller {
     response.send({
       ...request.user.toObject(),
       password: undefined,
-      twoFactorAuthenticationCode: undefined
+      twoFactorAuthenticationCode: undefined,
     });
   }
 

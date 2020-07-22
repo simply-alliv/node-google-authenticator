@@ -1,7 +1,7 @@
 {
   "name": "node-google-authenticator",
   "version": "1.0.0",
-  "description": "",
+  "description": "A server-side Node application with two-factor authentication.",
   "main": "src/server.ts",
   "dependencies": {
     "@types/bcrypt": "^3.0.0",
@@ -42,6 +42,7 @@
   "scripts": {
     "dev": "ts-node ./src/server.ts",
     "lint": "tslint -p tsconfig.json -c tslint.json",
+    "lint:fix": "tslint --fix -p tsconfig.json -c tslint.json",
     "test": "jest"
   },
   "author": "Allistair Vilakazi",

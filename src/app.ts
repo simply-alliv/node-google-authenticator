@@ -1,9 +1,9 @@
-import * as bodyParser from "body-parser";
-import * as cookieParser from "cookie-parser";
-import * as express from "express";
-import * as mongoose from "mongoose";
-import Controller from "./interfaces/controller.interface";
-import errorMiddleware from "./middleware/error.middleware";
+import * as bodyParser from 'body-parser';
+import * as cookieParser from 'cookie-parser';
+import * as express from 'express';
+import * as mongoose from 'mongoose';
+import Controller from './interfaces/controller.interface';
+import errorMiddleware from './middleware/error.middleware';
 
 class App {
   public app: express.Application;
@@ -38,7 +38,7 @@ class App {
 
   private initializeControllers(controllers: Controller[]) {
     controllers.forEach((controller) => {
-      this.app.use("/", controller.router);
+      this.app.use('/', controller.router);
     });
   }
 
@@ -48,7 +48,7 @@ class App {
       `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`,
       {
         useNewUrlParser: true,
-      }
+      },
     );
   }
 }
