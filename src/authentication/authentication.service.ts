@@ -1,6 +1,5 @@
 import * as bcrypt from 'bcrypt';
 import { Response } from 'express';
-import * as jwt from 'jsonwebtoken';
 import Paseto from 'paseto.js';
 import * as QRCode from 'qrcode';
 import * as speakeasy from 'speakeasy';
@@ -24,7 +23,7 @@ class AuthenticationService {
       password: hashedPassword,
     });
     user.password = undefined;
-    const tokenData = this.createToken(user);
+    const tokenData = await this.createToken(user);
     const cookie = this.createCookie(tokenData);
     return {
       cookie,
