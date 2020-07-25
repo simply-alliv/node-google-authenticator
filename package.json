@@ -17,6 +17,7 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "5.7.5",
+    "paseto.js": "^0.1.6",
     "qrcode": "^1.4.1",
     "speakeasy": "^2.0.0"
   },
